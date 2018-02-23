@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ifml3</groupId>
+        <artifactId>ifml3-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath>../ifml3-parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>ifml3-sample</artifactId>
+    <packaging>bundle</packaging>
+
+    <name>ifml3-sample</name>
+
+    <!-- Not inherited!?? -->
+    <prerequisites>
+        <maven>${maven.version}</maven>
+    </prerequisites>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.drombler.fx</groupId>
+            <artifactId>drombler-fx-core-docking</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drombler.acp</groupId>
+            <artifactId>drombler-acp-core-action</artifactId>
+        </dependency>  
+        <dependency>
+            <groupId>org.drombler.acp</groupId>
+            <artifactId>drombler-acp-core-docking</artifactId>
+        </dependency>    
+        <dependency>
+            <groupId>org.drombler.acp</groupId>
+            <artifactId>drombler-acp-core-docking-spi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drombler.commons</groupId>
+            <artifactId>drombler-commons-docking-core</artifactId>
+        </dependency>  
+        <dependency>
+            <groupId>org.drombler.commons</groupId>
+            <artifactId>drombler-commons-docking-fx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drombler.commons</groupId>
+            <artifactId>drombler-commons-action-fx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drombler.commons</groupId>
+            <artifactId>drombler-commons-action-context</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>

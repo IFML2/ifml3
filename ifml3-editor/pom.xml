@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ifml3</groupId>
+        <artifactId>ifml3-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath>../ifml3-parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>ifml3-editor</artifactId>
+    <packaging>drombler-fx-application</packaging>
+
+    <name>ifml3-editor</name>
+
+    <properties>
+        <additionalExecArgs></additionalExecArgs>
+    </properties>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <executions> 
+                        <execution>
+                            <id>default-cli</id>
+                            <goals>
+                                <goal>exec</goal>
+                            </goals>
+                            <configuration>
+                                <commandlineArgs>${additionalExecArgs} -Duser.language=en -Duser.country=US -Djavafx.verbose=true -Dprism.verbose=true -Dbinary.css=false -Djava.util.logging.config.file=conf/logging.properties -jar "bin/ifml3.jar" --userdir "${project.build.directory}/userdir"</commandlineArgs>
+                                <executable>java</executable>
+                                <workingDirectory>${project.build.directory}/deployment/standalone</workingDirectory>
+                                <classpathScope>runtime</classpathScope>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>  
+                <groupId>org.drombler.fx</groupId>
+                <artifactId>drombler-fx-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <brandingId>ifml3</brandingId>
+                    <title>IFML3 Editor ${project.version}</title>
+                    <width>1500</width>
+                    <height>1000</height>
+                    <!--Uncomment the following line and specifcy an unused port to create a single instance application -->
+                    <!--<defaultSingleInstancePort>some unused port</defaultSingleInstancePort>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <dependencies>      
+        <dependency>
+            <!-- Provides the sample -->
+            <groupId>ifml3</groupId>
+            <artifactId>ifml3-sample</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <!-- Provides foo file support -->
+            <groupId>ifml3</groupId>
+            <artifactId>ifml3-foo</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+ 
+        <dependency> 
+            <!-- Configures the provided content of the JavaFX Application. -->
+            <groupId>org.drombler.fx</groupId>
+            <artifactId>drombler-fx-core-application</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <!--  Provides a classic desktop application layout with a menubar, a toolbar, a status bar and a content area 
+            as the content of the JavaFX Application. 
+            You could replace this with your own definition of the application layout by providing an implementation
+            of MainSceneRootProvider and registering it as an OSGi service. -->
+            <groupId>org.drombler.fx</groupId>
+            <artifactId>drombler-fx-core-standard-desktop-classic</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <!-- Provides JavaFX-based standard status bar elements such as a ProgressMonitor. -->
+            <groupId>org.drombler.fx</groupId>
+            <artifactId>drombler-fx-core-standard-status</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <!--  Provides a JavaFX based implementation of the Docking Framework for the content area of the classic
+            desktop application layout.
+            You could omit this dependency as long as it is a transitive dependency. 
+            (E.g. if you use a project such as ifml3-sample, which provides some DockingPanes) 
+            You could also replace this with your own implementation of the ApplicationContentProvider and register
+            it as an OSGi service.-->
+            <groupId>org.drombler.fx</groupId>
+            <artifactId>drombler-fx-core-docking</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <!-- Provides the standard Docking Areas: left, right, top, bottom and editor
+            You could replace this with your own definition of these Docking Areas. -->
+            <groupId>org.drombler.acp</groupId>
+            <artifactId>drombler-acp-core-standard-docking</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- Provides the standard actions, toolbar buttons and menu items such as "Save" and "Save All" -->
+        <dependency>
+            <groupId>org.drombler.acp</groupId>
+            <artifactId>drombler-acp-core-standard-action</artifactId>
+            <scope>runtime</scope>
+        </dependency>  
+        <!-- Provides the standard file based actions, toolbar buttons and menu items such as "Open" -->
+        <dependency>
+            <groupId>org.drombler.acp</groupId>
+            <artifactId>drombler-acp-core-standard-action-data-file</artifactId>
+            <scope>runtime</scope>
+        </dependency>  
+        <dependency>
+            <!-- Provides some localized resources. -->
+            <groupId>org.drombler.fx</groupId>
+            <artifactId>drombler-fx-l10n-all</artifactId>
+            <type>pom</type>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <!-- Replace with any SLF4J binding you like-->
+        <!-- Here the binding for java.util.logging is used, since the jar is very small. -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+    
+    <profiles>
+        <profile>
+            <id>debug</id>
+            <properties>
+                <additionalExecArgs>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address}</additionalExecArgs>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.apache.felix.gogo.shell</artifactId>
+                    <version>0.10.0</version>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.apache.felix.gogo.command</artifactId>
+                    <version>0.14.0</version>
+                    <scope>runtime</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.osgi</groupId>
+                            <artifactId>org.osgi.core</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.apache.felix.gogo.runtime</artifactId>
+                    <version>0.16.2</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>
