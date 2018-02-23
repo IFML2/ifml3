@@ -18,21 +18,21 @@
     <name>ifml3-parent</name>
 
     <description>The parent POM of my ifml3 project. This ifml3 Parent POM should be the parent (either directly or indirectly) of every ifml3 project unless there is a good reason to do otherwise (in which case the reason should be documented).</description>
-    <url>http://www.mycompany.com/ifml3</url>
-    <inceptionYear>2012</inceptionYear>
+    <url>https://github.com/IFML2/ifml3</url>
+    <inceptionYear>2018</inceptionYear>
     
     <!-- Override the organization. 
     Otherwise you would inherit the Drombler specific organization configuration, which wouldn't be correct.-->
     <organization>
-        <name>My Company</name>
-        <url>http://www.mycompany.com</url>
+        <name>IFML</name>
+        <url>https://github.com/IFML2/ifml3</url>
     </organization>
     
     <!-- Override the project licenses. 
     Otherwise you would inherit the Drombler specific licenses configuration, which wouldn't be correct.-->
     <licenses>
         <license>
-            <name>My License Name</name>
+            <name>Apache 2 License</name>
             <url>../LICENSE.txt</url>
             <distribution>repo</distribution>
         </license>
@@ -42,10 +42,10 @@
     Otherwise you would inherit the Drombler specific developers configuration, which wouldn't be correct.-->
     <developers>
         <developer>
-            <id>someuser</id>
-            <name>Some Name</name>
-            <email>someuser@mycompany.com</email>
-            <url>http://www.mycompany.com/someuser</url>
+            <id>Madzi</id>
+            <name>Dmitry Eliseev</name>
+            <email>eliseevsan@gmail.com</email>
+            <url>https://github.com/Madzi</url>
             <timezone>1</timezone>
         </developer>
     </developers>
@@ -53,20 +53,21 @@
     <!-- Override the project scm configuration. 
     Otherwise you would inherit the Drombler specific scm configuration, which wouldn't be correct.-->
     <scm>
-        <connection>scm:hg:http://hg.mycompany.com/ifml3</connection>
-        <developerConnection>scm:hg:ssh://puce77@hg.mycompany.com/ifml3</developerConnection>
-        <url>http://hg.mycompany.com/ifml3</url>
+        <connection>scm:hg:http://github.com/IFML2/ifml3</connection>
+        <developerConnection>scm:hg:ssh://github.com/IFML2/ifml3</developerConnection>
+        <url>http://github.com/IFML2/ifml3</url>
     </scm>
     
     <!-- Override the project issueManagement configuration. 
     Otherwise you would inherit the Drombler specific issueManagement configuration, which wouldn't be correct.-->
     <issueManagement>
-        <system>My System</system>
-        <url>http://issues.mycompany.com/ifml3</url>
+        <system>Trello.org</system>
+        <url>https://trello.com/b/9s2ZyHMG/ifml</url>
     </issueManagement>
     
     <properties>
         <drombler-fx.version>0.11</drombler-fx.version>
+        <kotlin.version>1.2.21</kotlin.version>
     </properties>
     
     <!-- Not inherited!?? -->
@@ -94,6 +95,12 @@
                 <version>${drombler-fx.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-osgi-bundle</artifactId>
+                <version>${kotlin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

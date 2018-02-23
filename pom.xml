@@ -24,5 +24,6 @@
         <module>ifml3-editor</module>
         <module>ifml3-sample</module>
         <module>ifml3-foo</module>
+        <module>ifml3-ifml</module>
     </modules>
 </project>
