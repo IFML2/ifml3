@@ -57,22 +57,6 @@
     </build>
     
     <dependencies>      
-        <dependency>
-            <!-- Provides the sample -->
-            <groupId>ifml3</groupId>
-            <artifactId>ifml3-sample</artifactId>
-            <version>${project.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        
-        <dependency>
-            <!-- Provides foo file support -->
-            <groupId>ifml3</groupId>
-            <artifactId>ifml3-foo</artifactId>
-            <version>${project.version}</version>
-            <scope>runtime</scope>
-        </dependency>
- 
         <dependency> 
             <!-- Configures the provided content of the JavaFX Application. -->
             <groupId>org.drombler.fx</groupId>
