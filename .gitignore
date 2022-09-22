@@ -9,3 +9,6 @@ target/
 # Idea
 .idea/
 *.iml
+
+# NetBeans
+nb-configuration.xml

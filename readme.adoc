@@ -1,8 +1,0 @@
-= IFML3
-
-Interactive Fiction Markup Language v 3.0
-
-== How to build
-* put `toolchains.xml` to you `MAVEN_HOME` folder (usualy it's `~/.m2`)
-* update `toolchains.xml` with your installed JDK informations
-* use `mvn clean package` to package application with *jlink*
