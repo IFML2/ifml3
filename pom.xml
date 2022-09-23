@@ -34,6 +34,16 @@
                 <artifactId>javafx-controls</artifactId>
                 <version>18.0.1</version>
             </dependency>
+            <dependency>
+                <groupId>org.jruby</groupId>
+                <artifactId>jruby</artifactId>
+                <version>9.3.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctorj</artifactId>
+                <version>2.5.6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -45,6 +55,26 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.10.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>3.0.0-M7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.12.1</version> <!-- version 4.x not compatible yet with asciidoctorj -->
+                </plugin>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>2.2.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.openjfx</groupId>
@@ -136,7 +166,46 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-site-plugin</artifactId>
-                        <version>4.0.0-M3</version>
+                        <configuration>
+                            <generateReports>true</generateReports>
+                            <generateSitemap>true</generateSitemap>
+                            <relativizeDecorationLinks>false</relativizeDecorationLinks>
+                            <locales>en,ru</locales>
+                            <inputEncoding>${encoding}</inputEncoding>
+                            <outputEncoding>${encoding}</outputEncoding>
+                            <asciidoc>
+                                <requires>
+                                    <require>asciidoctor-diagram</require>
+                                </requires>
+                                <attributes>
+                                    <icons>font</icons>
+                                    <source-highlighter>rouge</source-highlighter>
+                                    <toclevel>3</toclevel>
+                                </attributes>
+                            </asciidoc>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.asciidoctor</groupId>
+                                <artifactId>asciidoctor-maven-plugin</artifactId>
+                                <version>2.2.2</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.jruby</groupId>
+                                <artifactId>jruby</artifactId>
+                                <version>9.3.8.0</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.asciidoctor</groupId>
+                                <artifactId>asciidoctorj</artifactId>
+                                <version>2.5.6</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.asciidoctor</groupId>
+                                <artifactId>asciidoctorj-diagram</artifactId>
+                                <version>2.2.3</version>
+                            </dependency>
+                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
@@ -164,18 +233,20 @@
     <distributionManagement>
         <site>
             <id>ifml3</id>
-            <name>IFML3</name>
-            <url>file:///home/de/Workspace/github/ifml3/target</url>
+            <url>scm:git:git@github.com:IFML2/ifml3.git</url>
         </site>
     </distributionManagement>
+
     <issueManagement>
         <system>github</system>
         <url>https://github.com/IFML2/ifml3/issues</url>
     </issueManagement>
+
     <ciManagement>
         <system>github</system>
         <url>https://github.com/IFML2/ifml3/actions</url>
     </ciManagement>
+
     <scm>
         <connection>scm:git:https://github.com/IFML2/ifml3.git</connection>
         <developerConnection>scm:git:git@github.com:IFML2/ifml3.git</developerConnection>
