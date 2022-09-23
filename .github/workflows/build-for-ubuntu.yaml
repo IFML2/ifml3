@@ -1,4 +1,4 @@
-name: Build Linux
+name: Package for Ubuntu
 
 on:
   push:
@@ -30,17 +30,4 @@ jobs:
     - name: Make staging directory
       run: mkdir staging
     - name: Build JAR with Maven
-      run: mvn -B package
-    - name: Copy JAR to staging
-      run: cp target/*.jar staging
-    - name: Gluon Build
-      run: mvn gluonfx:build gluonfx:package
-      env:
-        GRAALVM_HOME: ${{ env.JAVA_HOME }}
-    - name: Copy native image to staging
-      run: cp -r target/gluonfx/x86_64-linux/IFML* staging
-    - name: Upload
-      uses: actions/upload-artifact@v2
-      with:
-        name: Package
-        path: staging
+      run: mvn -B install
