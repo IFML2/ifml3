@@ -38,6 +38,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>ifml3</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>

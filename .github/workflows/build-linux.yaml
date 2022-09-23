@@ -38,7 +38,7 @@ jobs:
       env:
         GRAALVM_HOME: ${{ env.JAVA_HOME }}
     - name: Copy native image to staging
-      run: cp -r target/gluonfx/x86_64-linux/Resistor* staging
+      run: cp -r target/gluonfx/x86_64-linux/IFML* staging
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
