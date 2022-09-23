@@ -6,17 +6,18 @@ on:
   pull_request:
     branches: [master, develop]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup GraalVM environment
-      uses: DeLaGuardo/setup-graalvm@master
-      with:
-        graalvm: '22.2.0'
-        java: 'java17'
+    - name: Install SDKMAN
+      run: curl -s "https://get.sdkman.io" | bash
+      run: source "$HOME/.sdkman/bin/sdkman-init.sh"
+    - name: Setup GluonVM environment
+      run: sdk i java 22.1.0.1.r17-gln
+    - name: Setup GRAALVM_HOME
+      run: export GRAALVM_HOME="$HOME/.sdkman/candidates/java/22.1.0.1.r17-gln/"
     - name: APT update
       run: sudo apt update
     - name: Install libraries
