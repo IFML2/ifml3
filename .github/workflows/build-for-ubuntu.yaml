@@ -1,0 +1,33 @@
+name: Build for Ubuntu
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: sdkman/sdkman-action@master
+      id: sdkman
+      with:
+        candidate: java
+        version: 22.1.0.1.r17-gln
+    - uses: actions/setup-java@v1
+      id: setup-java
+      with:
+        java-version: 17
+        jdkFile: ${{ steps.sdkman.outputs.file }}
+    - name: Setup GRAALVM_HOME
+      run: export GRAALVM_HOME="$JAVA_HOME"
+    - name: APT update
+      run: sudo apt update
+    - name: Install libraries
+      run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+    - name: Make staging directory
+      run: mkdir staging
+    - name: Build JAR with Maven
+      run: mvn -B install
