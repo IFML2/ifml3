@@ -15,7 +15,7 @@ jobs:
       id: sdkman
       with:
         candidate: java
-        version: 22.1.0.1.r17-gln
+        version: 24.0.1-graal
     - uses: actions/setup-java@v1
       id: setup-java
       with:
