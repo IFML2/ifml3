@@ -1,8 +1,7 @@
 package ifml3.app.view.ui.internal;
 
-import ifml3.api.ComponentConnector;
-import ifml3.api.internal.BaseComponentConnector;
-import ifml3.api.internal.BaseSubscriber;
+import ifml3.api.connector.ComponentConnector;
+import ifml3.api.connector.internal.BaseSubscriber;
 import ifml3.app.view.ui.UIComponent;
 import ifml3.ui.TextSanitizer;
 import ifml3.ui.UserCommand;
@@ -42,7 +41,7 @@ public class PlayerComponent implements UIComponent, UserInterface {
         this.textField.setOnAction(this::processCommand);
         this.vBox = new VBox(textArea, textField);
         this.subscriber = new BaseSubscriber<>(this::processMessage);
-        this.connector = new BaseComponentConnector<>(subscriber, publisher);
+        this.connector = ComponentConnector.create(subscriber, publisher);
     }
 
     @Override

@@ -1,6 +1,6 @@
-package ifml3.api.internal;
+package ifml3.api.connector.internal;
 
-import ifml3.api.ComponentConnector;
+import ifml3.api.connector.ComponentConnector;
 import java.util.concurrent.Flow.Publisher;
 import java.util.concurrent.Flow.Subscriber;
 

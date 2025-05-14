@@ -1,4 +1,4 @@
-package ifml3.api.internal;
+package ifml3.api.connector.internal;
 
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;

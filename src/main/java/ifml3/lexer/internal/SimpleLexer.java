@@ -1,8 +1,8 @@
 package ifml3.lexer.internal;
 
-import ifml3.api.ComponentConnector;
-import ifml3.api.internal.BaseComponentConnector;
-import ifml3.api.internal.BaseSubscriber;
+import ifml3.api.connector.ComponentConnector;
+import ifml3.api.connector.internal.BaseComponentConnector;
+import ifml3.api.connector.internal.BaseSubscriber;
 import ifml3.engine.EngineCommand;
 import ifml3.engine.EngineMessage;
 import ifml3.lexer.Dictionary;

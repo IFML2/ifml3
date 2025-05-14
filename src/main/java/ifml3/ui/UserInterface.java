@@ -1,6 +1,6 @@
 package ifml3.ui;
 
-import ifml3.api.ComponentConnector;
+import ifml3.api.connector.ComponentConnector;
 
 public interface UserInterface {
 

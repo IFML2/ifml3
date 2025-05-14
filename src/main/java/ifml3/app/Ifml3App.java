@@ -1,8 +1,6 @@
 package ifml3.app;
 
 import ifml3.app.i18n.AppMessage;
-import ifml3.app.i18n.AppTranslation;
-import ifml3.app.i18n.Translation;
 import ifml3.app.view.MainView;
 import ifml3.app.view.View;
 import ifml3.app.view.ui.internal.PlayerComponent;
@@ -15,12 +13,13 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ifml3.api.i18n.I18N;
 
 public class Ifml3App extends Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Ifml3App.class);
 
-    private Translation translation;
+    private I18N translation;
     private View view;
     private PlayerComponent player;
     private Lexer lexer;
@@ -29,7 +28,7 @@ public class Ifml3App extends Application {
     @Override
     public void init() {
         logger.info("Initialization...");
-        this.translation = new AppTranslation(ResourceBundle.getBundle("lang/ifml3"));
+        this.translation = I18N.create(ResourceBundle.getBundle("lang/ifml3"));
         final var mainView = new MainView(translation);
         this.view = mainView;
         this.player = mainView.player();

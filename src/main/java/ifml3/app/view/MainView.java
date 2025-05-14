@@ -1,8 +1,7 @@
 package ifml3.app.view;
 
-import ifml3.api.ComponentConnector;
+import ifml3.api.connector.ComponentConnector;
 import ifml3.app.i18n.AppMessage;
-import ifml3.app.i18n.Translation;
 import ifml3.app.view.ui.internal.PlayerComponent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -11,14 +10,15 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
+import ifml3.api.i18n.I18N;
 
 public class MainView implements View {
 
-    private final Translation translation;
+    private final I18N translation;
     private final Scene scene;
     private final PlayerComponent player;
 
-    public MainView(final Translation translation) {
+    public MainView(final I18N translation) {
         this.translation = translation;
         this.player = new PlayerComponent();
         final var pane = new BorderPane(player.get(), menuBar(), label("right"), inputLine(), treeView());

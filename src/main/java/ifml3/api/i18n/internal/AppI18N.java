@@ -1,13 +1,14 @@
-package ifml3.app.i18n;
+package ifml3.api.i18n.internal;
 
+import ifml3.api.i18n.I18N;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class AppTranslation implements Translation {
+public class AppI18N implements I18N {
 
     private final ResourceBundle bundle;
 
-    public AppTranslation(final ResourceBundle bundle) {
+    public AppI18N(final ResourceBundle bundle) {
         this.bundle = bundle;
     }
 

@@ -1,8 +1,7 @@
 package ifml3.engine.internal;
 
-import ifml3.api.ComponentConnector;
-import ifml3.api.internal.BaseComponentConnector;
-import ifml3.api.internal.BaseSubscriber;
+import ifml3.api.connector.ComponentConnector;
+import ifml3.api.connector.internal.BaseSubscriber;
 import ifml3.engine.Engine;
 import ifml3.engine.EngineCommand;
 import ifml3.engine.EngineMessage;
@@ -18,7 +17,7 @@ public class SimpleEngine implements Engine {
     public SimpleEngine() {
         publisher = new SubmissionPublisher();
         subscriber = new BaseSubscriber<>(this::processCommand);
-        connector = new BaseComponentConnector<>(subscriber, publisher);
+        connector = ComponentConnector.create(subscriber, publisher);
     }
 
     @Override

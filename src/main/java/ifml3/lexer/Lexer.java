@@ -1,6 +1,6 @@
 package ifml3.lexer;
 
-import ifml3.api.ComponentConnector;
+import ifml3.api.connector.ComponentConnector;
 import ifml3.engine.EngineCommand;
 import ifml3.engine.EngineMessage;
 import ifml3.ui.UserCommand;
