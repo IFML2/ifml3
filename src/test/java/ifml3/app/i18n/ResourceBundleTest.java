@@ -2,8 +2,8 @@ package ifml3.app.i18n;
 
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Assertions;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package ifml3.app.i18n;
 
-import ifml3.app.i18n.Translation.Message;
+import ifml3.api.i18n.I18N.Message;
 
 public enum AppMessage implements Message {
     APP_TITLE("app.title"),
